@@ -2,6 +2,11 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import pytesseract
+from PIL import Image
+from PIL import ImageFilter
+import os
+from PIL import ImageEnhance
 
 
 def run():
@@ -17,5 +22,16 @@ def run():
     captcha_id = soup.find("input",attrs={"name":"captcha-id"})
     print(captcha_id)
 
+def test():
+    R,G,B = 0,1,2
+    infile = "codeImg/code.png"
+    f,ext = os.path.splitext(infile)
+    img = Image.open(infile).point(lambda x:0 if x<143 else 255,"1")
+    img.show()
+
+
+
+
+
 if __name__ == "__main__":
-    run()
+    test()
